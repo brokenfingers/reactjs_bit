@@ -13,6 +13,13 @@
   }
 }
 
+.color-mark {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-color: transparent;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
