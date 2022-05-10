@@ -1,6 +1,8 @@
 function CarPrice(props) {
     return (
-        <h3>{props.price+'$'}</h3>
+        <>
+            {props.price > 4000 ? <h3>props.price+'$'</h3> : <h4>props.price+'$'</h4>}
+        </>
     )
 }
 
