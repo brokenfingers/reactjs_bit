@@ -45,27 +45,8 @@
   }
 }
 
-.vovere{
-  color: pink;
-}
-
-.kates{
-  list-style: none;
-  color: rgb(107, 107, 255);
-}
-
-.figure{
-  display: inline-block;
-  background-color: #61dafb;
-  position: relative;
-  margin: 20px;
-}
-
-.circle{
-  display: inline-block;
-  background-color: bisque;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
+.rainbow-line{
+  display: block;
+  width: 500px;
+  height: 40px;
 }
