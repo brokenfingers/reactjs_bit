@@ -50,3 +50,11 @@
   width: 500px;
   height: 40px;
 }
+
+.bl{
+  display: block;
+    width: 500px;
+    height: 40px;
+    background-color: black;
+}
+
