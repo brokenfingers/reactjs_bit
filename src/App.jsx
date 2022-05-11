@@ -3,19 +3,19 @@ import Rainbow from './Components/003/RaInbow';
 
 const rainbow = [
 
-    'crimson',
+    {color: 'crimson', size: 30},
 
-    'orange',
+    {color: 'orange', size: 14},
 
-    'yellow',
+    {color: 'yellow', size: 52},
 
-    'green',
+    {color: 'green', size: 27},
 
-    'skyblue',
+    {color: 'skyblue', size: 40},
 
-    'darkblue',
+    {color: 'darkblue', size: 17},
 
-    'darkmagenta'
+    {color: 'darkmagenta', size: 22}
 
 ];
 
