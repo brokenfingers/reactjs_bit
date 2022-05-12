@@ -5,10 +5,11 @@ class FatDog extends React.Component{
         super();
         this.state = { size: 20 };
     }
-
+    
     onButtonPress = () => {
-        this.setState({size: 40});
-        console.log('ivyko paspaudimas')
+        // this.setState(s => ({size: s.size===20 ? 40 : 20}));
+        this.setState(s => (s.size=== 20? {size : 40} : {size : 20} ));
+
     }
 
     render() {
