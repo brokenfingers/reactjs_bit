@@ -12,11 +12,13 @@ class Fish extends React.Component{
     }
 
     render() {
+        return <div className={'square'}></div>
+        // if(this.props.cls !== '') {
+        //    return <div className={this.props.cls}></div>
+        // }
+        // return null;
 
-        if(this.props.cls !== '') {
-           return <div className={this.props.cls}></div>
-        }
-        return null;
+
 //         return (
 //         <>
 //             <div className={this.props.cls}></div>

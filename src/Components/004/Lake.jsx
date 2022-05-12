@@ -5,12 +5,13 @@ class Lake extends React.Component {
 
     constructor() {
         super();
-        this.state = {cls: 'square'}
+        this.state = {fish: []}
             }
 
     spust = () => {
-        console.log(this.state)
-        this.setState(cl => (cl.cls === 'square' ? {cls : '' } : {cls : 'square' }))
+       let fish2 = [...this.state.fish]
+       fish2.push(1)
+       this.setState({fish: fish2})
     }
     render() {
 
@@ -19,7 +20,9 @@ class Lake extends React.Component {
         return (
             <>
                 <button onClick={this.spust}>Mygtukas</button>
-                <Fish cls={this.state.cls}></Fish>
+               {
+                   this.state.fish.map((itm, i) => <Fish key={i}></Fish> )
+               }
             </>
         )
     }
