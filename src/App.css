@@ -58,3 +58,11 @@
     background-color: black;
 }
 
+
+.square{
+    display: inline-block;
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+
+}
