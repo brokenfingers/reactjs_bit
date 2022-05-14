@@ -3,9 +3,9 @@ import {useState} from 'react';
 
 function App() {
     
-    const [show, setShow] = useState(true)
+    const [color, setShow] = useState('red')
     const doShow = () => {
-        setShow(s => !s);
+        setShow('blue');
     }
     return (
         <div className="App">
@@ -13,7 +13,7 @@ function App() {
                 <h1>Hook</h1>
                 <button onClick={doShow}>red/blue</button>
                 {
-                    show ?   <div className="square" style={{backgroundColor:'red'}}></div> : <div className="square" style={{backgroundColor:'blue'}}></div>
+                   <div className="square" style={{backgroundColor:color}}></div>
                 }
             </header>
         </div>
