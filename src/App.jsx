@@ -2,19 +2,43 @@ import './App.css'
 import {useState} from 'react';
 
 function App() {
-    
-    const [color, setShow] = useState('red')
+    const arr = [1]
+    const [show, setShow] = useState(true)
+    const [color, setColor] = useState('blue')
+    const [numb, setNumber] = useState(1)
+     
     const doShow = () => {
-        setShow('blue');
+       setShow(s => !s);
+    }
+
+    const setRedFnct = () => {
+        setColor('red')
+    }
+
+    const setYellFnct = () => {
+        setColor('yellow')
+    }
+
+    const addNumber = () => {
+        setNumber(s => ++s)
+        
+    }
+     const subtrNumber = () => {
+        setNumber(s => --s)
+        
     }
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Hook</h1>
-                <button onClick={doShow}>red/blue</button>
-                {
-                   <div className="square" style={{backgroundColor:color}}></div>
-                }
+                <h1>Hook {numb}</h1>
+                    {show ? <div className="square" style={{backgroundColor:color}}></div> : null}
+                <button onClick={doShow}>show/hide</button>
+                <button onClick={setRedFnct}>red</button>
+                <button onClick={setYellFnct}>yellow</button>
+                <button onClick={addNumber}>add number</button>
+                <button onClick={subtrNumber}>subtr number</button>
+                
+
             </header>
         </div>
     )

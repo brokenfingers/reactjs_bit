@@ -52,3 +52,20 @@
   background-color: #61dafb;
 }
 
+
+button {
+padding: 15px 32px;
+  background-color: #32c2e9;
+  color: white;
+  /* font-weight: bold; */
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover{
+
+    background-color: #9fe8fc;
+}
