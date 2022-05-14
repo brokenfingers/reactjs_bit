@@ -45,24 +45,10 @@
   }
 }
 
-.rainbow-line{
-  display: block;
-  width: 500px;
-  height: 40px;
-}
-
-.bl{
-  display: block;
-    width: 500px;
-    height: 40px;
-    background-color: black;
-}
-
-
 .square{
-    display: inline-block;
-    background-color: blue;
-    width: 20px;
-    height: 20px;
-
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  background-color: #61dafb;
 }
+
