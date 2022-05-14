@@ -1,5 +1,7 @@
 import './App.css'
+import './Functions/randColor'
 import {useState} from 'react';
+import randColor from './Functions/randColor';
 
 function App() {
 
@@ -35,9 +37,10 @@ function App() {
     const addSquare = () => {
             // mano sprendimas
             // setAddSq(s => [...s, s.length==0 ? 1 : s[s.length-1]+1])  
-            setAddSq(s => [...s, (s[s.length-1]??0)+1]) 
-    }
 
+            setAddSq(s => [...s, randColor()]) 
+    }
+// eslint-disable-next-line
     const makeCalc = operator => setNumber(s => eval(`${s}${operator}1`))
     return (
         <div className="App">
@@ -56,8 +59,8 @@ function App() {
                 <button onClick={() => doShow(2)}>show/hide 2</button>
 
                 <button onClick={() => setColorfunct('red')}>red</button>
-                <button onClick={() => setColorfunct('yellow')}>red</button>
-                <button onClick={() => setColorfunct('pink')}>red</button>
+                <button onClick={() => setColorfunct('yellow')}>yellow</button>
+                <button onClick={() => setColorfunct('pink')}>pink</button>
                 
                 <button onClick={() => makeCalc('+')}>add number</button>
                 <button onClick={() => makeCalc('-')}>subtr number</button>
@@ -68,7 +71,7 @@ function App() {
                 </div>
                     <div className='square-wrapper'>
                         {
-                         sqaureArray.map((itm, i) => <div key={i} className="square" style={{backgroundColor:color}}>{itm}</div>)
+                         sqaureArray.map((itm, i) => <div key={i} className="square" style={{backgroundColor:'#'+itm}}></div>)
                         }
 
                     </div>
