@@ -33,17 +33,25 @@ function App() {
     // }
 
     const addSquare = () => {
-
-            setAddSq(s => [...s, 1])
+            // mano sprendimas
+            // setAddSq(s => [...s, s.length==0 ? 1 : s[s.length-1]+1])  
+            setAddSq(s => [...s, (s[s.length-1]??0)+1]) 
     }
 
     const makeCalc = operator => setNumber(s => eval(`${s}${operator}1`))
     return (
         <div className="App">
             <header className="App-header">
+
+
+                {show ? <div className="square" style={{backgroundColor:color}}>1</div> : null}
+                {show1 ? <div className="square" style={{backgroundColor:color}}>2</div> : null}
+
+
+                <div className='square-wrapper'>
+
                 <h1>Hook {numb}</h1>
-                    {show ? <div className="square" style={{backgroundColor:color}}>1</div> : null}
-                    {show1 ? <div className="square" style={{backgroundColor:color}}>2</div> : null}
+                    
                 <button onClick={() => doShow(1)}>show/hide 1</button>
                 <button onClick={() => doShow(2)}>show/hide 2</button>
 
@@ -56,9 +64,11 @@ function App() {
                 
                 <button onClick={addSquare}>add square</button>
                 
+
+                </div>
                     <div className='square-wrapper'>
                         {
-                         sqaureArray.map(itm => <div className="square" style={{backgroundColor:color}}>2</div>)
+                         sqaureArray.map((itm, i) => <div key={i} className="square" style={{backgroundColor:color}}>{itm}</div>)
                         }
 
                     </div>
