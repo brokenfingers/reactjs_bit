@@ -45,9 +45,15 @@
   }
 }
 
+.square-wrapper{
+  width: 80%;
+
+}
+
 .square{
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
   display: inline-block;
   background-color: #61dafb;
 }
