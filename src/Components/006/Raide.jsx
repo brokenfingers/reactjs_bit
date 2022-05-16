@@ -1,11 +1,9 @@
-function Raide({array}) {
+
+import randColor from '../../Functions/randColor';
+function Raide({letter, bgColor}) {
     
     return (
-        <p>
-            {
-                array.map((imt, k) => imt)
-            }
-        </p>
+       <p className='eilej' style={{backgroundColor:bgColor, color:'#'+randColor()}}>{letter}</p>
     )
 
 }

@@ -46,7 +46,12 @@ function App() {
                 <Antras skaicius={2} spalva='green' klase='big'></Antras>
 
                 <KvadratasParent sqOrCirc='apskr' bigColor='skyblue' smallColor='pink'></KvadratasParent>
-                <Raide array={labas}></Raide>
+                <div className="zodis">
+                    {
+                        labas.map((l, i) => <Raide key={i} letter={l} bgColor={i%2===0 ? 'white' : 'black'}></Raide>)
+                    }
+                </div>
+                
             </header>
 
         </div>

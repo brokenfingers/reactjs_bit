@@ -105,3 +105,25 @@ button:hover{
   border-radius: 50px;
   border: 2px dotted white;
 }
+
+.eilej {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid white;
+  width:15px;
+  height:15px;
+  line-height: 15px;
+  vertical-align: bottom;
+}
+
+/* div .eilej:nth-of-type(even) {
+  background-color: black;
+}
+div .eilej:nth-of-type(odd) {
+  background-color: white; */
+/* } */
+
+.zodis{
+  /* width: 300px; */
+}
