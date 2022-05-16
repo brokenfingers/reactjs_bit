@@ -1,6 +1,6 @@
-function KvadratasChild() {
+function KvadratasChild({smallColor}) {
 
-    return <div className="kvadratas-small"></div>
+    return <div className="kvadratas-small" style={{backgroundColor:smallColor}}></div>
 }
 
 export default KvadratasChild;

@@ -1,10 +1,23 @@
+import Apskritimas from "./Apskritimas";
 import KvadratasChild from "./KvadratasChild";
 
-function KvadratasParent() {
+function KvadratasParent({bigColor, smallColor, sqOrCirc}) {
 
-    return <div className="kvadratas-big">
-        <KvadratasChild></KvadratasChild>
-    </div>
+        return (
+
+            <div className="kvadratas-big" style={{backgroundColor: bigColor}}>
+                {
+                   sqOrCirc === 'kvadr' ? <KvadratasChild smallColor={smallColor}></KvadratasChild> : null
+                }        
+                {
+                   sqOrCirc === 'apskr' ? <Apskritimas smallColor={smallColor}></Apskritimas>  : null
+                }        
+ 
+            </div>
+           
+        )
+        
+    
 }
 
 export default KvadratasParent;

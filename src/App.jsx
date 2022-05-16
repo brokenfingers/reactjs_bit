@@ -12,7 +12,7 @@ function App() {
                 <Vienas skaicius={5} spalva='red' klase='small'></Vienas>
                 <Antras skaicius={2} spalva='green' klase='big'></Antras>
 
-                <KvadratasParent></KvadratasParent>
+                <KvadratasParent sqOrCirc='kvadr' bigColor='skyblue' smallColor='pink'></KvadratasParent>
             </header>
 
         </div>
