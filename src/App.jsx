@@ -9,7 +9,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <Vienas skaicius={5}></Vienas>
-                <Antras skaicius={9}></Antras>
+                <Antras skaicius={2}></Antras>
             </header>
         </div>
     )

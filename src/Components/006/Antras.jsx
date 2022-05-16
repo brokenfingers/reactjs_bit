@@ -1,9 +1,6 @@
 function Antras({skaicius}) {
-    if(skaicius + 1 < 9) {
 
-        return <h2>{1+skaicius}</h2> 
-        }
-        return null;
+    return skaicius + 2 < 9 ?  <h2>{2+skaicius}</h2> : null;
 }
 
 export default Antras;
