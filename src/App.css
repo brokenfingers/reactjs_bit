@@ -75,3 +75,11 @@ button:hover{
 
     background-color: #9fe8fc;
 }
+
+.big{
+    font-size: 4rem;
+}
+
+.small{
+  font-size: 1rem;
+}
