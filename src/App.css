@@ -89,6 +89,7 @@ button:hover{
   width: 300px;
   height: 300px;
   border: 2px dotted white;
+  transition: all 0.5s;
  
 }
 .kvadratas-small{
@@ -104,6 +105,8 @@ button:hover{
   height: 100px;
   border-radius: 50px;
   border: 2px dotted white;
+  position: absolute;
+  background-color: #61dafb;
 }
 
 .eilej {
