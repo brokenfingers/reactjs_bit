@@ -2,7 +2,7 @@ import { useState } from "react";
 import randColor from '../../Functions/randColor'
 import Apskritimas from "./Apskritimas";
 
-function BlueSquare({cls}) {
+function BlueSquare({cls, nosis}) {
 
 
     const [ clr, colorFunct] = useState('blue');
@@ -34,8 +34,9 @@ function BlueSquare({cls}) {
                         position: "relative"
 
                         }}>
-                <Apskritimas l='-64px' visible={cls} widt={border}></Apskritimas>
-                <Apskritimas l='250px' visible={cls} widt={border}></Apskritimas>
+                <Apskritimas l='-64px' visible={cls} widt={border} y='88%'></Apskritimas>
+                <Apskritimas l='250px' visible={cls} widt={border} y='88%'></Apskritimas>
+                <Apskritimas l='104px' visible={nosis} widt={border} y='36%'></Apskritimas>
 
                 <button onClick={makeRed} >change to red</button>
                 <button onClick={makeRandom} >ramdom backgroudn</button>
