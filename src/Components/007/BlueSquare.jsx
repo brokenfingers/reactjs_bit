@@ -1,13 +1,19 @@
 import { useState } from "react";
 import randColor from '../../Functions/randColor'
 import Apskritimas from "./Apskritimas";
+import ButtonHolder from "./ButtonHolder";
 
 function BlueSquare({cls, nosis}) {
 
 
     const [ clr, colorFunct] = useState('blue');
+   
     const [ border, setBorder ] = useState(1);
 
+
+    const growBorder = () => {
+        setBorder(i => i === 10 ? 1 : 10)
+    }
 
    const makeRed = () => {
         colorFunct('red');
@@ -22,9 +28,7 @@ function BlueSquare({cls, nosis}) {
         colorFunct( clr === 'blue' ? 'red' : 'blue')
     }
 
-    const growBorder = () => {
-        setBorder(i => i === 10 ? 1 : 10)
-    }
+    
 
     return(
         <>
@@ -41,7 +45,7 @@ function BlueSquare({cls, nosis}) {
                 <button onClick={makeRed} >change to red</button>
                 <button onClick={makeRandom} >ramdom backgroudn</button>
                 <button onClick={toggleBlueRed} >toggleRedBlue</button>
-                <button onClick={growBorder} >change border</button>
+                <ButtonHolder virvute={growBorder} border={border}></ButtonHolder>
 
             </div>
             

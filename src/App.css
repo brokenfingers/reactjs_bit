@@ -130,3 +130,9 @@ div .eilej:nth-of-type(odd) {
 .zodis{
   /* width: 300px; */
 }
+
+.bth{
+  border: 4px dotted yellow;
+  margin: 20px;
+  background-color: rgb(255, 255, 182);
+}
