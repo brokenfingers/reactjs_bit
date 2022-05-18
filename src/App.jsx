@@ -5,10 +5,10 @@ import { useState} from 'react'
 
 function App() {
 
-    const [bgColor, setColor] = useState(null)
+    const [bgColor, setColor] = useState('pink')
     
     const onSetColor = () => {
-        setColor('green');
+        setColor(i => i === 'pink' ? 'green' : 'pink');
     }
 
     return (
