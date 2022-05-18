@@ -2,6 +2,7 @@ import './App.css'
 import Buttnon from './Components/008/Buttnon';
 import Green from './Components/008/Green';
 import { useState} from 'react'
+import Square from './Components/008/Square';
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
                 <div>
                     {
 
-                        sqArr.map((itm, i) => <div key={i} className="square">{itm}</div>)
+                        sqArr.map((itm, i) => <Square key={i} i={i}></Square>)
                     }
 
                 </div>
