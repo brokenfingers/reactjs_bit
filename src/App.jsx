@@ -9,6 +9,17 @@ function App() {
     const [numbr, setIncrease] = useState(1)
     const [redBg, setRedBg] = useState(null)
 
+    const [sqArr, setSqArray] = useState([])
+
+    const onSetSqArray = () => {
+            setSqArray( itm => [...sqArr, ++(sqArr[sqArr.length-1]) || 1])
+    }
+
+    const onRemSqArray = () => {
+
+        setSqArray(itm => itm.slice(0, -1))
+    }
+
     const onSetColor = () => {
         setColor(i => i === 'pink' ? 'green' : 'pink');
     }
@@ -25,10 +36,18 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>Uplifting <span style={{color:bgColor, backgroundColor: redBg}}>{numbr}</span></h1>
-                <Buttnon virvute={onSetColor} virvute2={onSetIncrease} onSetRed={onSetRed}></Buttnon>
+                <Buttnon virvute={onSetColor} virvute2={onSetIncrease} onSetRed={onSetRed} onSetSqArray={onSetSqArray} onRemSqArray ={onRemSqArray}></Buttnon>
                 <Green bgc={bgColor}></Green>
-            </header>
 
+                <div>
+                    {
+
+                        sqArr.map((itm, i) => <div key={i} className="square">{itm}</div>)
+                    }
+
+                </div>
+            </header>
+            
         </div>
     )
 }
