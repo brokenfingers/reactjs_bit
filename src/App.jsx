@@ -1,27 +1,21 @@
-import { useState } from 'react';
 import './App.css'
-import BlueSquare from './Components/007/BlueSquare';
+import Buttnon from './Components/008/Buttnon';
+import Green from './Components/008/Green';
+import { useState} from 'react'
 
 function App() {
 
-    const [cls, setClass] = useState(false);
-
-    const [nosis, setNosis] = useState(false);
-
-    const onTitleClick = () => {
-        setClass(i => !i);
-    }
-
-    const onButtonNosis = () => {
-        setNosis(true);
+    const [bgColor, setColor] = useState(null)
+    
+    const onSetColor = () => {
+        setColor('green');
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1 onClick={onTitleClick} style={{letterSpacing: cls ? '10px' : 0}}>Labas</h1>
-               <BlueSquare cls={cls} nosis={nosis}></BlueSquare>
-               <button onClick={onButtonNosis} style={{position:'absolute', top: 0, left:0}}>Nosis </button>
+                <Buttnon virvute={onSetColor}></Buttnon>
+                <Green bgc={bgColor}></Green>
             </header>
 
         </div>
