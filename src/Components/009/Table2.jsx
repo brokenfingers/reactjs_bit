@@ -9,7 +9,12 @@ function Table2({users}) {
                 </thead>
                 <tbody>
                     {
-                    users.map((itm, i)=> <tr key={i}><td>{itm.firstName+' '+itm.lastName}</td><td><img src={itm.image.slice(0, itm.image.indexOf('?'))}/></td></tr>)
+                    users.map((itm, i)=> 
+                    <tr key={i}>
+                        <td>{itm.firstName+' '+itm.lastName}</td>
+                        <td><img src={itm.image.slice(0, itm.image.indexOf('?'))}/>
+                        </td>
+                    </tr>)
                     }
                 </tbody>
                 
