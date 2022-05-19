@@ -1,52 +1,54 @@
 import './App.css'
-import Buttnon from './Components/008/Buttnon';
-import Green from './Components/008/Green';
-import { useState} from 'react'
-import Square from './Components/008/Square';
+import axios from 'axios'
+
+import { useEffect, useState} from 'react'
+import Square from './Components/009/Square'
+
 
 function App() {
 
-    const [bgColor, setColor] = useState('pink')
-    const [numbr, setIncrease] = useState(1)
-    const [redBg, setRedBg] = useState(null)
+    const [btnArr, setArray] = useState([])
 
-    const [sqArr, setSqArray] = useState([])
-
-    const onSetSqArray = () => {
-            setSqArray( itm => [...sqArr, ++(sqArr[sqArr.length-1]) || 1])
+    const setSquare = () => {
+        setArray(i => [...(i) || 1, 1])
     }
 
-    const onRemSqArray = () => {
+    const [users, setUsers] = useState([])
 
-        setSqArray(itm => itm.slice(0, -1))
-    }
-
-    const onSetColor = () => {
-        setColor(i => i === 'pink' ? 'green' : 'pink');
-    }
-
-    const onSetIncrease = () => {
-        setIncrease(i => redBg === 'red' ? --i : ++i)
-    }
-
-    const onSetRed = () => {
-        setRedBg(i => i===null ? 'red' : null)
-    }
+    useEffect(()=>{
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(resp=> {
+            setUsers(resp.data);
+            console.log(resp.data)
+        })
+    }, [])
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Uplifting <span style={{color:bgColor, backgroundColor: redBg}}>{numbr}</span></h1>
-                <Buttnon virvute={onSetColor} virvute2={onSetIncrease} onSetRed={onSetRed} onSetSqArray={onSetSqArray} onRemSqArray ={onRemSqArray}></Buttnon>
-                <Green bgc={bgColor}></Green>
-
-                <div>
+                <h1>use effect</h1>
+                <button onClick={setSquare }>add</button>
+            <div className='square-wrapper'>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {
-
-                        sqArr.map((itm, i) => <Square key={i} i={i}></Square>)
+                    users.map((itm, i)=> <tr key={i}><td>{itm.name}</td><td>{itm.address.street+itm.address.suite}</td></tr>)
                     }
+                </tbody>
+                
+                
+                
+            </table>
+            
 
-                </div>
+            </div>
+
             </header>
             
         </div>

@@ -44,7 +44,9 @@
     transform: rotate(360deg);
   }
 }
-
+td{
+  border: 1px solid grey;
+}
 .square-wrapper{
   width: 80%;
 
