@@ -1,64 +1,49 @@
 import './App.css'
-import axios from 'axios'
-
-import { useEffect, useState} from 'react'
-import Square from './Components/009/Square'
-import Table from './Components/009/Table'
-import Table2 from './Components/009/Table2'
-import Posts from './Components/009/Posts'
-
+import './bootstrap.css'
+import {useState} from 'react'
 
 function App() {
 
-    const [btnArr, setArray] = useState([])
+const [text, setText] = useState('');
 
-    const setSquare = () => {
-        setArray(i => [...(i) || 1, 1])
-    }
+const [anArray, setArray] = useState([]);
 
-    const [users, setUsers] = useState([])
 
-    const [users2, setUser2] = useState([])
 
-    const [posts, setPost] = useState([])
 
-    useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(resp => {
-            setPost(resp.data);
-            console.log(resp.data)
-        })
-    },[])
 
-    useEffect(()=>{
-        axios.get('https://dummyjson.com/users?limit=10')
-        .then(resp =>{
-            setUser2(resp.data.users)
-            
-        })
-    }, [])
 
-    useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(resp=> {
-            setUsers(resp.data);
-            
-        })
-    }, [])
+
+const handleText = (e) => {
+    setArray(it=> [...it, e.target.value])
+    setText(e.target.value)
+}
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>use effect</h1>
-                <button onClick={setSquare }>add</button>
-            <div className='square-wrapper'>
-            <Table users={users}></Table>
-            <Table2 users={users2}></Table2>
-            <Posts posts={posts}></Posts>
-            </div>
+            <div className="card">
+                <div className="card-header">
+                    Featured
+                </div>
+                <div className="card-body">
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="textOk">Text</label>
+                            <input type="text" className="form-control" id="textOk" aria-describedby="emailHelp" value={text} onChange={handleText}/>
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </form>
+
+                    <ul>
+                        {
+                            anArray.map((ir, i )=> <li key={i}>{ir}</li>)
+                        }
+                    </ul>
+                </div>
+                </div>
 
             </header>
-            
         </div>
     )
 }

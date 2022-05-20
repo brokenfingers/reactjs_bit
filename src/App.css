@@ -1,3 +1,7 @@
+body * {
+  color:rgb(74, 74, 74);
+}
+
 .App {
   text-align: center;
 }
@@ -44,9 +48,7 @@
     transform: rotate(360deg);
   }
 }
-td{
-  border: 1px solid grey;
-}
+
 .square-wrapper{
   width: 80%;
 
@@ -145,4 +147,8 @@ div .eilej:nth-of-type(odd) {
   border: 4px dotted yellow;
   margin: 20px;
   background-color: rgb(255, 255, 182);
+}
+
+ul{
+  list-style: none;
 }
