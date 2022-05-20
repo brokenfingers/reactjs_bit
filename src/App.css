@@ -152,3 +152,7 @@ div .eilej:nth-of-type(odd) {
 ul{
   list-style: none;
 }
+
+.btn {
+  margin: 10px;
+}

@@ -1,6 +1,6 @@
 import './App.css'
 import './bootstrap.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 function App() {
 
@@ -11,13 +11,22 @@ const [anArray, setArray] = useState([]);
 
 
 
+const onButton = (e) => {
 
+    setArray(it=> [...it ?? '', text])
+    setText('');
+}
+
+const onClearList = () => {
+    setArray([])
+}
 
 
 const handleText = (e) => {
-    setArray(it=> [...it, e.target.value])
     setText(e.target.value)
 }
+
+
 
     return (
         <div className="App">
@@ -27,17 +36,19 @@ const handleText = (e) => {
                     Featured
                 </div>
                 <div className="card-body">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="textOk">Text</label>
-                            <input type="text" className="form-control" id="textOk" aria-describedby="emailHelp" value={text} onChange={handleText}/>
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                    </form>
+                    
+                    <div className="form-group">
+                        <label htmlFor="textOk">Text</label>
+                        <input type="text" className="form-control" id="textOk" aria-describedby="emailHelp" value={text} onChange={handleText}/>
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <button className='btn btn-primary' onClick={onButton}>add</button>
+                        <button className='btn btn-primary' onClick={onClearList}>clear</button>
+                    </div>
+                    
 
-                    <ul>
+                    <ul className="list-group">
                         {
-                            anArray.map((ir, i )=> <li key={i}>{ir}</li>)
+                            anArray.map((ir, i )=> <li className="list-group-item" key={i}>{ir}</li>)
                         }
                     </ul>
                 </div>
