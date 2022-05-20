@@ -60,6 +60,34 @@ const clearSelect = () => {
     setSelectArr([])
 }
 
+const [text3, setText3 ] = useState('')
+
+const onSetText3 = e => {
+    setText3(e.target.value)
+}
+
+const [newOption, setNewOption] = useState([])
+
+const onSetNewOption = () => {
+    setNewOption(i => text3 !== "" ? [...i, text3] : i)
+}
+
+const [option3, setOption3] = useState('');
+
+const onSetOption3 = (e) => {
+    setOption3(e.target.value)
+}
+
+const [option3Arr, setOption3Arr] = useState([]);
+
+const onSetOption3Arr = () => {
+    setOption3Arr(i => option3 !== '' ? [...i, option3] : i)
+}
+
+
+
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -120,8 +148,29 @@ const clearSelect = () => {
 
                     </div>
 
+                    <div className="form-group">
+                    <label htmlFor="textOk3">Text</label>
+                    <input type="text" className="form-control" id="textOk3" aria-describedby="emailHelp" value={text3} onChange={onSetText3}/>
+                    
+                    <button className='btn btn-primary' onClick={onSetNewOption}>add</button>
+                    
+                    </div>
 
+                    <select name="number" id="number" value={option3} onChange={onSetOption3}>
+                            <option value="" >select</option>
+                            {
+                                newOption.map((ir, i) => <option key={i} value={ir} >{ir}</option>)
+                            }
+                    </select>
 
+                     <button className='btn btn-primary' onClick={onSetOption3Arr}>add</button>
+                        
+
+                        <ul className="list-group">
+                        {
+                            option3Arr.map((ir, i )=> <li className="list-group-item" key={i}>{ir}</li>)
+                        }   
+                        </ul>
                 </div>
                 </div>
 
