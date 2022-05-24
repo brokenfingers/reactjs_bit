@@ -159,10 +159,14 @@ ul{
 
 .card {
   display:inline-block;
+  width: 600px;
   padding: 2rem;
   padding-top: 0;
   background-color: #fff;
-  
+  margin-bottom: 1rem;
+}
+.card:nth-of-type(odd) {
+  margin-bottom: 0.2rem;
 }
 
 .card .title {

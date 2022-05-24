@@ -4,28 +4,25 @@ import { useState } from 'react';
 function App() {
 
     const [checkbox, setCheckbox] = useState({a:true, b:false, c: false, d: true});
-    const [radio, setRadio] = useState('option1')
+    const [radio, setRadio] = useState('option3')
     const [list, setList] = useState([])
     const [radioList, setRadioList] = useState([])
+    const [range, setRange] = useState(0);
+    const [rangeList, setRangeList] = useState([])
+
     
-    const  handleCheckbox = (checked) => {
-        setCheckbox(i => ({...i, [checked]: !i[checked]}))
-    }
-
-    const handleList = () => {
-        setList(i => [...i, (checkbox.a ? 'A' : '')+(checkbox.b ? 'B' : '')+(checkbox.c ? 'C' : '')+(checkbox.d ? 'D' : '')])
-    }
-
-    const handleClear = () => {
-        setList(i => [])
-    }
+    const  handleCheckbox = (checked) => {setCheckbox(i => ({...i, [checked]: !i[checked]}))}
+    const handleList = () => {setList(i => [...i, (checkbox.a ? 'A' : '')+(checkbox.b ? 'B' : '')+(checkbox.c ? 'C' : '')+(checkbox.d ? 'D' : '')])}
+    const handleClear = () => {setList(i => [])}
 
     const handleRadio = (e) => { setRadio(e.target.value) }
-    const handleRadioList = () => {
-        setRadioList(i=>[...i, radio])
-    }
-
+    const handleRadioList = () => { setRadioList(i=>[...i, radio])}
     const handleRadioClear = () => { setRadioList( i => []) }
+    
+    const handleRange = (e) => { setRange(e.target.value)}
+    const handleRangeList = () => { setRangeList(i=>[...i, range])}
+    const handleRangeClear = () => { setRangeList( i => []) }
+    
     return (
         <div className="App">
             <header className="App-header">
@@ -69,6 +66,22 @@ function App() {
                     </ul>
                     <button onClick={handleRadioClear}>Clear list</button>
                 </div>
+
+                <div className="card">
+                     <p className="title">Range</p>
+                    <label for="points">Points (between 0 and 10):</label>
+                    <input type="range" id="points" name="points" min="0" max="100" value={range} onChange={handleRange}/>
+                    <button onClick={handleRangeList}>ADD Range</button>
+                </div>
+                <div className="card">
+                    <ul>
+                    {
+                        rangeList.map((itm, i) => <li key={i}>{itm}</li>)
+                     }  
+                    </ul>
+                    <button onClick={handleRangeClear}>Clear list</button>
+                </div>
+            
             </header>
         </div>
     )
