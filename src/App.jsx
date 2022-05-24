@@ -79,6 +79,12 @@ function App() {
                         rangeList.map((itm, i) => <li key={i}>{itm}</li>)
                      }  
                     </ul>
+                    <div>Suma:
+                        {
+                            rangeList.length>0 ? rangeList.reduce((a, b) => +a + +b) : 0
+
+                        }
+                    </div>
                     <button onClick={handleRangeClear}>Clear list</button>
                 </div>
             
