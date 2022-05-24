@@ -6,6 +6,11 @@ function App() {
 
     const [number, setNumber] = useState(null)
     const [squareArr, setSquareArr] = useState([])
+    const [text, setText] = useState('');
+
+    const handleText = (e) => {
+        setText(e.target.value)
+    }
 
     const handleButton = () => {
             setNumber(i => {
@@ -20,11 +25,20 @@ function App() {
 
     const handleAddSquare = () => {
         setSquareArr(i => {
-             localStorage.setItem('square', JSON.stringify([...squareArr, 1]))
-            return [...i, 1]
+             localStorage.setItem('square', JSON.stringify([...squareArr, text ?? 1]))
+            return [...i, text ?? 1]
         }
             )
+            setText('');
         
+    }
+
+    const handleRemoveSquare = () => {
+        setSquareArr(i => {
+            localStorage.setItem('square', JSON.stringify([...squareArr.slice(1)]))
+            return [...squareArr.slice(0, squareArr.length-1)]
+        }
+            )
     }
 
     useEffect(()=>{
@@ -46,10 +60,12 @@ function App() {
                 <div className="card">
                     <p className="title">squares</p>
                     <button onClick={handleAddSquare}>Add square</button>
+                    <button onClick={handleRemoveSquare}>Remove square</button>
+                    <input onChange={handleText} type='text' value={text}></input>
                 </div>
                 <div className='card'>
                     {
-                        squareArr.map((_, i) => <div className='square' key={i}></div>)
+                        squareArr.map((itm, i) => <div className='square' key={i}>{itm !== 1 ? itm : null}</div>)
                     }
                 </div>
             
