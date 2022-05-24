@@ -6,7 +6,24 @@ function App() {
 
     const [number, setNumber] = useState(null)
     const [squareArr, setSquareArr] = useState([])
-    const [text, setText] = useState('');
+    const [text, setText] = useState('#fff');
+    const [check, setCheck] = useState(true)
+    const [check2, setCheck2] = useState(false)
+
+
+    const handleCheck = (e) => {
+        setCheck(i => !i)
+    }
+
+    const handleCheck2 = () => {
+        setCheck2(i => !i)
+    }
+
+    const resetCheck = () => {
+        setCheck(false)
+        setCheck2(false)
+
+    }
 
     const handleText = (e) => {
         setText(e.target.value)
@@ -61,12 +78,24 @@ function App() {
                     <p className="title">squares</p>
                     <button onClick={handleAddSquare}>Add square</button>
                     <button onClick={handleRemoveSquare}>Remove square</button>
-                    <input onChange={handleText} type='text' value={text}></input>
+                    <input onChange={handleText} type='color' value={text}></input>
                 </div>
                 <div className='card'>
                     {
-                        squareArr.map((itm, i) => <div className='square' key={i}>{itm !== 1 ? itm : null}</div>)
+                        squareArr.map((itm, i) => <div className='square' style={{backgroundColor: itm !== 1 ? itm : null}} key={i}></div>)
                     }
+                </div>
+
+                <div className="card">
+                    <p className="title">Square toggle</p>
+                    <label>Red / green</label>
+                    <input type="checkbox" name='ga' value={check} onChange={handleCheck} checked={check === true}/>
+                    <label>Square / circle</label>
+                    <input type="checkbox" name='ga' value={check} onChange={handleCheck2} checked={check2}/>
+                    <button onClick={resetCheck}>reset</button>
+                </div>
+                <div className="card">
+                    <div className='square' style={{backgroundColor:check ? '#FF0000' : '#00ff00', borderRadius: check2 ? '50%' : '0'}}></div>
                 </div>
             
             </header>
