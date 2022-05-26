@@ -1,6 +1,14 @@
-function Hello ({color, afrika}) {
+function Hello ({color, afrika, handleAteColor}) {
 
-return <h3 style={{color}}>{afrika}</h3>
+return (
+    <>
+        <h3 style={{color}}>{afrika}</h3>
+        <button onClick={() => handleAteColor('green')}>Set green</button>
+    </>
+    
+)
+
+
 
 }
 

@@ -2,6 +2,7 @@ import './App.css'
 import {  useState } from 'react';
 import Hello from './Components/014/Hello';
 import Red from './Components/014/Red';
+import List from './Components/014/Lists';
 
 
 
@@ -26,10 +27,15 @@ function App() {
         // setMessage(message === '' ? 'ate' : '')
         setMessage(i => i ? '' : 'ate')
     }
-    const handleRedAte = () => {
+
+
+    const handleAteColor = (clr) => {
         // setMessage(message === '' ? 'ate' : '')
-        setRed('red')
+        setRed(clr)
     }
+
+
+
 
     const handleColor2 = () => {
         setColor2('red');
@@ -37,6 +43,11 @@ function App() {
 
     const handleAfrika = () => {
         setAfrika('Hello afrika')
+    }
+
+    const handleResetAfrika = () => {
+        setAfrika('Hello')
+        setColor2('white');
     }
 
 
@@ -49,11 +60,14 @@ function App() {
                 <button onClick={handleExit}>say bye</button>
                 <button onClick={handleExitClear}>not ate</button>
                 <button onClick={handleToggleAte}>toggle ate</button>
-                <button  onClick={handleRedAte}>red ate</button>
-                <button  onClick={handleAfrika}>afrika</button>
-
+                <button  onClick={() => handleAteColor('red')}>red ate</button>
+                
                 <Red handleColor2={handleColor2}></Red>
-                <Hello afrika={afrika} color={color2}></Hello>
+                
+                <button  onClick={handleAfrika}>afrika</button>
+                <button  onClick={handleResetAfrika}>reset afrika</button>
+                <Hello afrika={afrika} color={color2} handleAteColor={handleAteColor}></Hello>
+                <List></List>
             </header>
         </div>
     )
