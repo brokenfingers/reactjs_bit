@@ -163,18 +163,29 @@ ul{
   display:inline-block;
   width: 600px;
   padding: 2rem;
-  padding-top: 0;
+  padding-top: 6rem;
   background-color: #fff;
   margin-bottom: 1rem;
+  position: relative;
+  border-radius: 1.5rem;
 }
 .card:nth-of-type(odd) {
   margin-bottom: 0.2rem;
 }
 
 .card .title {
-  
+  border-radius: 1.5rem;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  position: absolute;
+  font-size: 3rem;
+  color: white;
+  top: 0;
+  left: 0;
+  margin-block-start: 0;
+  padding: 1rem 0;
   width: 100%;
-  background-color: rgb(233, 233, 233);
+      background-color: rgb(155 141 141);
 }
 
 .card input {
