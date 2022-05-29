@@ -20,8 +20,13 @@ import { useState } from 'react';
 
 function App() {
 
-     const [carItem, setCarItem] = useState(null)
-     const [activeCar, setActiveCar] = useState(10)
+    const [carItem, setCarItem] = useState(null)
+    const [activeCar, setActiveCar] = useState(10)
+    const [squareArr, setSquareArr] = useState([])
+
+    const handleSquares = () => {
+        setSquareArr(i => [...i, 1, 1])
+    }
 
     return (
         <div className="App">
@@ -29,6 +34,12 @@ function App() {
                 {/* <CarNames cars={cars}></CarNames> */}
                 <h2>Picked model: {carItem ? carItem.type : null}</h2>
                 <CarNames2 cars={cars} setCarItem={setCarItem} activeCar={activeCar} setActiveCar={setActiveCar}></CarNames2>
+                <button onClick={handleSquares}>click</button>
+                <div className="card">
+                    {
+                        squareArr.map((itm, i) => <div style={{backgroundColor: i%2 ? 'grey' : 'skyblue' }} className='square' key={i}></div>)
+                    }
+                </div>
             </header> 
         </div>
     )
