@@ -188,6 +188,17 @@ ul{
       background-color: rgb(155 141 141);
 }
 
+.card >div:hover{
+  cursor: pointer;
+  width: 100%;
+  background-color: #282c34;
+}
+
+.card span{
+  color: red;
+  margin-left: 1rem;
+}
+
 .card input {
   padding: 1rem;
 }

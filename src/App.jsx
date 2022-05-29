@@ -1,5 +1,9 @@
 import './App.css'
-import CarNames from './Components/015/CarNames';
+// import CarNames from './Components/015/CarNames';
+import CarNames2 from './Components/015/CarNames2';
+import { useState } from 'react';
+
+ 
  const cars = [
         {id: 1, type: 'MB', color: 'blue', price: 45874.01},
         {id: 4, type: 'Volvo', color: 'pink', price: 54658.00},
@@ -13,14 +17,18 @@ import CarNames from './Components/015/CarNames';
     ];
 
 
+
 function App() {
 
+     const [carItem, setCarItem] = useState(null)
+     const [activeCar, setActiveCar] = useState(10)
 
     return (
         <div className="App">
             <header className="App-header">
-                <CarNames cars={cars}></CarNames>
-               
+                {/* <CarNames cars={cars}></CarNames> */}
+                <h2>Picked model: {carItem ? carItem.type : null}</h2>
+                <CarNames2 cars={cars} setCarItem={setCarItem} activeCar={activeCar} setActiveCar={setActiveCar}></CarNames2>
             </header> 
         </div>
     )
