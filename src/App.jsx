@@ -9,6 +9,7 @@ function App() {
     const [nameColor, setColorState] = useState('#ffffff')
     const [list, setList] = useState([])
     const [clickedId, setClickedId] = useState(null)
+    const [editItem, setEditItem] = useState(null)
 
     const handleTextChange = (e) => {
         setNameState(e.target.value)
@@ -16,8 +17,16 @@ function App() {
 
     const handleColorChange = e => {
         setColorState(e.target.value)
+        
     }
 
+    useEffect(()=>{
+        
+        if(editItem) {
+             setNameState(editItem.nameState);
+            setColorState(editItem.nameColor) 
+        }
+    }, [editItem])
 
 
     useEffect(()=>{
@@ -28,7 +37,13 @@ function App() {
     const handleClick = () => {
         if(!nameState|| !nameColor ) return
 
-        setList(i => [...i, {nameState, nameColor, id:rand(10000, 99000)}])
+        if(editItem) {
+            setList(i => [...i.map(d=>d.id===editItem.id ? {nameState, nameColor, id: editItem.id} : d), ])
+            setEditItem(null)
+        } else {
+            setList(i => [...i, {nameState, nameColor, id:rand(10000, 99000)}])
+        }
+        
         setNameState('')
         setColorState('#ffffff')
     }
@@ -47,27 +62,21 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className='card'>
-                    <p className='title'>Add to list</p>
+                    <p className='title'>{editItem ? 'Edit list item' : 'Add to list'}</p>
                     <input onChange={handleTextChange} type="text" placeholder='name'value={nameState}/>
                     <input onChange={handleColorChange} type="color" value={nameColor}/>
-                    <button onClick={handleClick}>add</button>
+                    <button onClick={handleClick}>{editItem ? 'Edit' : 'Add'}</button>
                     <button onClick={sortNames}>sort names</button>
                     <button onClick={sortColors}>sort colors</button>
                     <button onClick={clearList}>clear list</button>
-
                 </div>
                 <div className='card'>
                     <p className='title'>List</p>
-                    
                         <>
                         {
-
-                            list.length > 0 ? list.map((itm, i)=><ListItem setClickedId={setClickedId} key={i} itm={itm} listNr={i+1}></ListItem> ): null
+                            list.length > 0 ? list.map((itm, i)=><ListItem setEditItem={setEditItem} setClickedId={setClickedId} key={i} itm={itm} listNr={i+1}></ListItem> ): null
                         }
-
                         </>
-                        
-                    
                 </div>
             </header> 
         </div>
