@@ -1,44 +1,49 @@
 import './App.css'
-// import CarNames from './Components/015/CarNames';
-import CarNames2 from './Components/015/CarNames2';
-import { useState } from 'react';
-
- 
- const cars = [
-        {id: 1, type: 'MB', color: 'blue', price: 45874.01},
-        {id: 4, type: 'Volvo', color: 'pink', price: 54658.00},
-        {id: 17, type: 'MB', color: 'black', price: 6465.77},
-        {id: 47, type: 'Opel', color: 'blue', price: 89791.77},
-        {id: 10, type: 'Scania', color: 'red', price: 44624.00},
-        {id: 107, type: 'BMW', color: 'red', price: 98591.00},
-        {id: 44, type: 'BMW', color: 'yellow', price: 789.30},
-        {id: 78, type: 'MB', color: 'blue', price: 64598.00},
-        {id: 99, type: 'Tesla', color: 'gray', price: 78944.00}
-    ];
-
+import {useState} from 'react'
 
 
 function App() {
 
-    const [carItem, setCarItem] = useState(null)
-    const [activeCar, setActiveCar] = useState(10)
-    const [squareArr, setSquareArr] = useState([])
+    const [nameState, setNameState] = useState('')
+    const [nameColor, setColorState] = useState(null)
+    const [list, setList] = useState([])
 
-    const handleSquares = () => {
-        setSquareArr(i => [...i, 1, 1])
+    const handleTextChange = (e) => {
+        setNameState(e.target.value)
+    }
+
+    const handleColorChange = e => {
+        setColorState(e.target.value)
+    }
+
+    const handleClick = () => {
+        if(!nameState|| !nameColor ) return
+
+        setList(i => [...i, {nameState, nameColor }])
+
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                {/* <CarNames cars={cars}></CarNames> */}
-                <h2>Picked model: {carItem ? carItem.type : null}</h2>
-                <CarNames2 cars={cars} setCarItem={setCarItem} activeCar={activeCar} setActiveCar={setActiveCar}></CarNames2>
-                <button onClick={handleSquares}>click</button>
-                <div className="card">
-                    {
-                        squareArr.map((itm, i) => <div style={{backgroundColor: i%2 ? 'grey' : 'skyblue' }} className='square' key={i}></div>)
-                    }
+                <div className='card'>
+                    <p className='title'>Add to list</p>
+                    <input onChange={handleTextChange} type="text" placeholder='name'value={nameState}/>
+                    <input onChange={handleColorChange} type="color" value={nameColor}/>
+                    <button onClick={handleClick}>add</button>
+                </div>
+                <div className='card'>
+                    <p className='title'>List</p>
+                    
+                        <>
+{
+
+                        list.length > 0 ? list.map((itm, i)=><div style={{backgroundColor:itm.nameColor}} key={i}>{itm.nameState}</div> ): null
+}
+
+                        </>
+                        
+                    
                 </div>
             </header> 
         </div>

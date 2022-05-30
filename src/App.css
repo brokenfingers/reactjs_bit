@@ -178,12 +178,12 @@ ul{
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
   position: absolute;
-  font-size: 3rem;
+  font-size: 2rem;
   color: white;
   top: 0;
   left: 0;
   margin-block-start: 0;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   width: 100%;
       background-color: rgb(155 141 141);
 }
