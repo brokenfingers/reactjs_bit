@@ -1,13 +1,14 @@
 import './App.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import ListItem from './Components/016/ListItem'
-
+import rand from './Functions/rand'
 
 function App() {
 
     const [nameState, setNameState] = useState('')
-    const [nameColor, setColorState] = useState(null)
+    const [nameColor, setColorState] = useState('#ffffff')
     const [list, setList] = useState([])
+    const [clickedId, setClickedId] = useState(null)
 
     const handleTextChange = (e) => {
         setNameState(e.target.value)
@@ -17,18 +18,29 @@ function App() {
         setColorState(e.target.value)
     }
 
+
+
+    useEffect(()=>{
+       setList(i=>[...i.filter(d=> d.id!==clickedId)])
+    }, [clickedId])
+    
+
     const handleClick = () => {
         if(!nameState|| !nameColor ) return
 
-        setList(i => [...i, {nameState, nameColor }])
+        setList(i => [...i, {nameState, nameColor, id:rand(10000, 99000)}])
         setNameState('')
-        setColorState(null)
+        setColorState('#ffffff')
     }
     const sortNames = () => {
         setList(i => [...list.sort((a, b) => a.nameState.localeCompare(b.nameState) )])
     }
     const sortColors = () => {
         setList(i => [...list.sort((a, b) => a.nameColor.localeCompare(b.nameColor) )])
+    }
+
+    const clearList = () => {
+        setList([])
     }
 
     return (
@@ -41,16 +53,17 @@ function App() {
                     <button onClick={handleClick}>add</button>
                     <button onClick={sortNames}>sort names</button>
                     <button onClick={sortColors}>sort colors</button>
+                    <button onClick={clearList}>clear list</button>
 
                 </div>
                 <div className='card'>
                     <p className='title'>List</p>
                     
                         <>
-{
+                        {
 
-                        list.length > 0 ? list.map((itm, i)=><ListItem key={i} itm={itm} listNr={i+1}></ListItem> ): null
-}
+                            list.length > 0 ? list.map((itm, i)=><ListItem setClickedId={setClickedId} key={i} itm={itm} listNr={i+1}></ListItem> ): null
+                        }
 
                         </>
                         
