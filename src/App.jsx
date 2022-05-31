@@ -12,6 +12,12 @@ function App() {
     const [selected, setSelected] = useState('l');
     const [checked, setChecked] = useState(false);
     const [range, setRange] = useState(0);
+    const [count, setCount] = useState('');
+    const [count2, setCount2] = useState('');
+
+    const handleCount = (e) => {
+        setCount(e.target.value);
+    };
 
     const handleRange = (e) => {
         setRange(e.target.value);
@@ -35,6 +41,8 @@ function App() {
 
     useEffect(() => {
         if (editItem) {
+            setCount2(editItem.count);
+            setCount('');
             setSelected(editItem.selected);
             setRange(editItem.range);
             setChecked(editItem.checked);
@@ -60,6 +68,7 @@ function App() {
                               selected,
                               checked,
                               range,
+                              count: +count2 + +count,
                               id: editItem.id,
                           }
                         : d
@@ -75,11 +84,15 @@ function App() {
                     selected,
                     checked,
                     range,
+                    count,
                     id: rand(10000, 99000),
                 },
             ]);
         }
-
+        setCount('');
+        setCount2('');
+        setRange(0);
+        setSelected('');
         setNameState('');
         setColorState('#ffffff');
     };
@@ -131,6 +144,8 @@ function App() {
                         type="color"
                         value={nameColor}
                     />
+                    <input type="text" onChange={handleCount} value={count} />
+                    <h3>{count2}</h3>
                     <select value={selected} onChange={handleChange}>
                         <option value=""></option>
                         <option value="m">M</option>
