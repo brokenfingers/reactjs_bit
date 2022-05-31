@@ -9,7 +9,17 @@ function App() {
     const [list, setList] = useState([]);
     const [clickedId, setClickedId] = useState(null);
     const [editItem, setEditItem] = useState(null);
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState('l');
+    const [checked, setChecked] = useState(false);
+    const [range, setRange] = useState(0);
+
+    const handleRange = (e) => {
+        setRange(e.target.value);
+    };
+
+    const handleCheckbox = (e) => {
+        setChecked(e.target.checked);
+    };
 
     const handleChange = (e) => {
         setSelected(e.target.value);
@@ -25,6 +35,9 @@ function App() {
 
     useEffect(() => {
         if (editItem) {
+            setSelected(editItem.selected);
+            setRange(editItem.range);
+            setChecked(editItem.checked);
             setNameState(editItem.nameState);
             setColorState(editItem.nameColor);
         }
@@ -41,7 +54,14 @@ function App() {
             setList((i) => [
                 ...i.map((d) =>
                     d.id === editItem.id
-                        ? { nameState, nameColor, selected, id: editItem.id }
+                        ? {
+                              nameState,
+                              nameColor,
+                              selected,
+                              checked,
+                              range,
+                              id: editItem.id,
+                          }
                         : d
                 ),
             ]);
@@ -49,7 +69,14 @@ function App() {
         } else {
             setList((i) => [
                 ...i,
-                { nameState, nameColor, selected, id: rand(10000, 99000) },
+                {
+                    nameState,
+                    nameColor,
+                    selected,
+                    checked,
+                    range,
+                    id: rand(10000, 99000),
+                },
             ]);
         }
 
@@ -84,6 +111,21 @@ function App() {
                         placeholder="name"
                         value={nameState}
                     />
+                    <label> Red or not</label>
+                    <input
+                        type="checkbox"
+                        onChange={handleCheckbox}
+                        checked={checked}
+                    />
+                    <label>(1 and 300):</label>
+                    <input
+                        type="range"
+                        value={range}
+                        onChange={handleRange}
+                        name="points"
+                        min="1"
+                        max="300"
+                    ></input>
                     <input
                         onChange={handleColorChange}
                         type="color"

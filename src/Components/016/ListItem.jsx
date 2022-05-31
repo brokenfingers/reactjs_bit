@@ -9,7 +9,11 @@ function ListItem({ itm, listNr, setClickedId, setEditItem }) {
 
     return (
         <div style={{ backgroundColor: itm.nameColor }}>
-            {listNr} {itm.nameState} {itm.selected}
+            {listNr}{' '}
+            <span style={{ color: itm.checked ? 'red' : 'black' }}>
+                {itm.nameState} {itm.range}
+            </span>{' '}
+            {itm.selected}
             <button onClick={setId}>Trinti</button>
             <button onClick={handleEditObj}>Redaguoti</button>
         </div>
