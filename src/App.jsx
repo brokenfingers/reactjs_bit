@@ -6,9 +6,12 @@ import Animals from './Components/018/Animals';
 import AddTree from './Components/018/AddTree';
 import AddAnimal from './Components/018/AddAnimal';
 import EditTree from './Components/018/EditTree';
+import EditAnimal from './Components/018/EditAnimals';
 
 function App() {
 
+    const [editedAnimal, setEditedAnimal] = useState(null)
+    const [editAnimal, setEditAnimal] = useState(null)
     const [editedTree, setEditedTree] = useState(null)
     const [editTree, setEditTree] = useState(null)
     const [deleteAnimalData, setDeleteAnimalData] = useState(null)
@@ -81,7 +84,14 @@ function App() {
         .then(response => setTreeUpdateTime(Date.now()))
         setEditedTree(null)
     }, [editedTree])
-
+    
+        useEffect(()=>{
+        if(editedAnimal === null) return
+            console.log(editAnimal)
+        axios.put('http://localhost:3003/animals/'+editedAnimal.id, editedAnimal)
+        .then(response => setAnimalUpdateTime(Date.now()))
+        setEditedAnimal(null)
+    }, [editedAnimal])
 
     return (
         <div className="App">
@@ -104,16 +114,19 @@ function App() {
                 </div>
                 <div className="card">
                     <p className="title">animals</p>
-                    {animalList
-                        ? animalList.map((itm, i) => (
+                    {animalList && animalList.map((itm, i) => (
                               <Animals
+                              setEditAnimal = {setEditAnimal}
                                 setDeleteAnimalData={setDeleteAnimalData}
                                   key={itm.id}
                                   animal={itm}
                                   index={i + 1}
                               ></Animals>
                           ))
-                        : null}
+                    }
+                    {
+                        editAnimal && <EditAnimal setEditAnimal={setEditAnimal} setEditedAnimal={setEditedAnimal} editAnimal={editAnimal}></EditAnimal>
+                    }
                 </div>
             </header>
         </div>

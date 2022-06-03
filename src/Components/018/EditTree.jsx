@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddTree({setTreeData, setEditTree, editTree, setEditedTree}) {
+function EditTree({setEditTree, editTree, setEditedTree}) {
 
     const [treeTitle, setTreeTitle] = useState(editTree.title)
     const [treeHeight, setTreeHeight] = useState(editTree.height)
@@ -34,4 +34,4 @@ function AddTree({setTreeData, setEditTree, editTree, setEditedTree}) {
     )
 }
 
-export default AddTree;
+export default EditTree;
