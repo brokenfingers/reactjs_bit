@@ -1,20 +1,19 @@
 import { useState } from "react";
 
-function AddTree() {
+function AddTree({setTreeData}) {
 
     const [treeTitle, setTreeTitle] = useState('')
     const [treeHeight, setTreeHeight] = useState('')
     const [treeType, setTreeType] = useState(0)
-    const [treeObj, setTreeObj] = useState(null)
+   
 
     const handleAddTree = () => {
-        setTreeObj(i => ({title: treeTitle, height: treeHeight, type: treeType}))
+        setTreeData({title: treeTitle, height: treeHeight, type: treeType})
         setTreeTitle('')
         setTreeHeight('')
         setTreeType('0')
     }
     
-
     return (
         <div>
             <h2>Add a tree</h2>
