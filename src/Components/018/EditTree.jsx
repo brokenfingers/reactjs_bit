@@ -1,22 +1,22 @@
 import { useState } from "react";
 
-function EditTree({setTreeData}) {
+function AddTree({setTreeData, setEditTree, editTree, setEditedTree}) {
 
-    const [treeTitle, setTreeTitle] = useState('')
-    const [treeHeight, setTreeHeight] = useState('')
-    const [treeType, setTreeType] = useState(0)
+    const [treeTitle, setTreeTitle] = useState(editTree.title)
+    const [treeHeight, setTreeHeight] = useState(editTree.height)
+    const [treeType, setTreeType] = useState(editTree.type)
    
 
-    const handleEditTree = () => {
-        setTreeData({title: treeTitle, height: treeHeight, type: treeType})
+    const handleAddTree = () => {
+        setEditedTree({id: editTree.id, title: treeTitle, height: treeHeight, type: treeType})
         setTreeTitle('')
         setTreeHeight('')
         setTreeType('0')
+        setEditTree(null)
     }
-    
     return (
-        <div >
-            <h2>Add a tree</h2>
+        <div className='modal'>
+            <h2>Edit a tree</h2>
             <label>Title</label>
             <input value={treeTitle} onChange={(e) => setTreeTitle(e.target.value)} type="text" />
             <label>Height</label>
@@ -29,9 +29,9 @@ function EditTree({setTreeData}) {
                 <option value='3'>krumas</option>
                 <option value='4'>gele</option>
             </select>
-            <button onClick={handleEditTree}>Add</button>
+            <button onClick={handleAddTree}>Edit</button>
         </div>
     )
 }
 
-export default EditTree;
+export default AddTree;

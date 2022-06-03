@@ -1,5 +1,5 @@
 body * {
-  color:rgb(74, 74, 74);
+  color: rgb(74, 74, 74);
 }
 
 .App {
@@ -33,7 +33,7 @@ body * {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  
+
 }
 
 .App-link {
@@ -44,17 +44,18 @@ body * {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.square-wrapper{
+.square-wrapper {
   width: 80%;
 
 }
 
-.square{
+.square {
   min-width: 50px;
   height: 50px;
   padding: 10px;
@@ -63,7 +64,8 @@ body * {
   background-color: #61dafb;
   vertical-align: top;
 }
-.circle{
+
+.circle {
   width: 50px;
   height: 50px;
   margin: 10px;
@@ -74,41 +76,42 @@ body * {
 
 
 button {
-    padding: 15px 32px;
-      background-color: #ffffff;
-      color: #3dc7ec;
-      /* font-weight: bold; */
-      border: none;
-      font-size: 1.2rem;
-      border-radius: 9px;
-      /* border-color: #758890; */
-      border: 1px solid #2cadcc;
-      cursor: pointer;
-      margin: 10px;
+  padding: 15px 32px;
+  background-color: #ffffff;
+  color: #3dc7ec;
+  /* font-weight: bold; */
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 9px;
+  /* border-color: #758890; */
+  border: 1px solid #2cadcc;
+  cursor: pointer;
+  margin: 10px;
 }
 
-button:hover{
+button:hover {
 
-    background-color: #9fe8fc;
+  background-color: #9fe8fc;
 }
 
-.big{
-    font-size: 4rem;
+.big {
+  font-size: 4rem;
 }
 
-.small{
+.small {
   font-size: 1rem;
 }
 
-.kvadratas-big{
+.kvadratas-big {
   display: inline-block;
   width: 300px;
   height: 300px;
   border: 2px dotted white;
   transition: all 0.5s;
- 
+
 }
-.kvadratas-small{
+
+.kvadratas-small {
   display: inline-block;
   width: 100px;
   height: 100px;
@@ -130,8 +133,8 @@ button:hover{
   padding: 10px;
   border-radius: 50%;
   border: 1px solid white;
-  width:15px;
-  height:15px;
+  width: 15px;
+  height: 15px;
   line-height: 15px;
   vertical-align: bottom;
 }
@@ -143,17 +146,17 @@ div .eilej:nth-of-type(odd) {
   background-color: white; */
 /* } */
 
-.zodis{
+.zodis {
   /* width: 300px; */
 }
 
-.bth{
+.bth {
   border: 4px dotted yellow;
   margin: 20px;
   background-color: rgb(255, 255, 182);
 }
 
-ul{
+ul {
   list-style: none;
 }
 
@@ -162,7 +165,7 @@ ul{
 }
 
 .card {
-  display:inline-block;
+  display: inline-block;
   width: 600px;
   padding: 2rem;
   padding-top: 6rem;
@@ -171,6 +174,7 @@ ul{
   position: relative;
   border-radius: 1.5rem;
 }
+
 .card:nth-of-type(odd) {
   margin-bottom: 0.2rem;
 }
@@ -187,10 +191,10 @@ ul{
   margin-block-start: 0;
   /* padding: 1rem 0; */
   width: 100%;
-      background-color: rgb(155 141 141);
+  background-color: rgb(155 141 141);
 }
 
-.card >div:hover{
+.card>div:hover {
   cursor: pointer;
   width: 100%;
   background-color: #282c34;
@@ -203,8 +207,29 @@ ul{
 
 .card input {
   padding: 1rem;
-      margin: 1rem;
+  margin: 1rem;
 }
-.card > *:nth-of-type(odd) {
+
+.card>*:nth-of-type(odd) {
   /* border-bottom: 1px solid grey; */
+}
+
+.App {
+  position: relative;
+
+}
+
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: #b0b6c2;
+}
+
+.hidden {
+  display: none;
 }

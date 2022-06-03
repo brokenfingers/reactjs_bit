@@ -5,9 +5,12 @@ import Tree from './Components/018/Trees';
 import Animals from './Components/018/Animals';
 import AddTree from './Components/018/AddTree';
 import AddAnimal from './Components/018/AddAnimal';
+import EditTree from './Components/018/EditTree';
 
 function App() {
 
+    const [editedTree, setEditedTree] = useState(null)
+    const [editTree, setEditTree] = useState(null)
     const [deleteAnimalData, setDeleteAnimalData] = useState(null)
     const [deleteTreeData, setDeleteTreeData] = useState(null)
     const [animalUpdateTime, setAnimalUpdateTime] = useState(Date.now())
@@ -70,6 +73,16 @@ function App() {
     }, [deleteAnimalData])
 
 
+    //PUT
+        useEffect(()=>{
+        if(editedTree === null) return
+
+        axios.put('http://localhost:3003/trees/'+editedTree.id, editedTree)
+        .then(response => setTreeUpdateTime(Date.now()))
+        setEditedTree(null)
+    }, [editedTree])
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -82,9 +95,12 @@ function App() {
                     <p className="title">trees</p>
                     {treeList
                         ? treeList.map((itm, i) => (
-                              <Tree setDeleteTreeData={setDeleteTreeData} key={i} tree={itm} index={i + 1}></Tree>
+                              <Tree setEditTree={setEditTree} setDeleteTreeData={setDeleteTreeData} key={i} tree={itm} index={i + 1}></Tree>
                           ))
                         : null}
+                        {
+                            editTree && <EditTree setEditTree={setEditTree} setEditedTree={setEditedTree} editTree={editTree}></EditTree>
+                        }
                 </div>
                 <div className="card">
                     <p className="title">animals</p>
