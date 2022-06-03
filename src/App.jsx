@@ -8,7 +8,8 @@ import AddAnimal from './Components/018/AddAnimal';
 
 function App() {
 
-   
+    const [animalUpdateTime, setAnimalUpdateTime] = useState(Date.now())
+   const [treeUpdateTime, setTreeUpdateTime] = useState(Date.now())
     const [treeList, setTreeList] = useState(null);
     const [animalList, setAnimalList] = useState(null);
     const [treeData, setTreeData] = useState(null);
@@ -22,13 +23,13 @@ function App() {
         axios.get('http://localhost:3003/trees').then((res) => {
             setTreeList(res.data);
         });
-    }, []);
+    }, [treeUpdateTime]);
 
     useEffect(() => {
         axios.get('http://localhost:3003/animals').then((res) => {
             setAnimalList(res.data);
         });
-    }, []);
+    }, [animalUpdateTime]);
     
     // WRITE
 
@@ -36,7 +37,7 @@ function App() {
         if(treeData === null) return
 
         axios.post('http://localhost:3003/trees', treeData)
-        .then(res => { console.log('react' +res.data) })
+        .then(response => setTreeUpdateTime(Date.now()))
         setTreeData(null)
     }, [treeData])
     
@@ -44,7 +45,7 @@ function App() {
         if(animalData === null) return
 
         axios.post('http://localhost:3003/animals', animalData)
-        .then(res => { console.log('react' +res.data) })
+        .then(res => { setAnimalUpdateTime(Date.now()) })
         setAnimalData(null)
     }, [animalData])
 
