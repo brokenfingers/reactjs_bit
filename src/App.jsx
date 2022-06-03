@@ -8,6 +8,8 @@ import AddAnimal from './Components/018/AddAnimal';
 
 function App() {
 
+    const [deleteAnimalData, setDeleteAnimalData] = useState(null)
+    const [deleteTreeData, setDeleteTreeData] = useState(null)
     const [animalUpdateTime, setAnimalUpdateTime] = useState(Date.now())
    const [treeUpdateTime, setTreeUpdateTime] = useState(Date.now())
     const [treeList, setTreeList] = useState(null);
@@ -49,6 +51,25 @@ function App() {
         setAnimalData(null)
     }, [animalData])
 
+        // DELETE
+
+    useEffect(()=>{
+        if(deleteTreeData === null) return
+
+        axios.delete('http://localhost:3003/trees/'+deleteTreeData.id)
+        .then(response => setTreeUpdateTime(Date.now()))
+        setDeleteTreeData(null)
+    }, [deleteTreeData])
+    
+    useEffect(()=>{
+        if(deleteAnimalData === null) return
+
+        axios.delete('http://localhost:3003/animals/'+deleteAnimalData.id)
+        .then(response => setAnimalUpdateTime(Date.now()))
+        setDeleteAnimalData(null)
+    }, [deleteAnimalData])
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -61,7 +82,7 @@ function App() {
                     <p className="title">trees</p>
                     {treeList
                         ? treeList.map((itm, i) => (
-                              <Tree key={i} tree={itm} index={i + 1}></Tree>
+                              <Tree setDeleteTreeData={setDeleteTreeData} key={i} tree={itm} index={i + 1}></Tree>
                           ))
                         : null}
                 </div>
@@ -70,6 +91,7 @@ function App() {
                     {animalList
                         ? animalList.map((itm, i) => (
                               <Animals
+                                setDeleteAnimalData={setDeleteAnimalData}
                                   key={itm.id}
                                   animal={itm}
                                   index={i + 1}

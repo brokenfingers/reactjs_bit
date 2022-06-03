@@ -1,4 +1,4 @@
-function Tree({ tree, index }) {
+function Tree({ tree, index, setDeleteTreeData }) {
     return (
         <div>
             <b>{index}</b>
@@ -8,7 +8,7 @@ function Tree({ tree, index }) {
                 {['spygliuotis', 'lapuotis', 'krumas', 'gėlė'][tree.type - 1]}
             </small>
             <button>edit</button>
-            <button>delete</button>
+            <button onClick={()=>setDeleteTreeData(tree)}>delete</button>
         </div>
     );
 }
