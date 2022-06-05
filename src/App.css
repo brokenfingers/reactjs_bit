@@ -233,3 +233,11 @@ ul {
 .hidden {
   display: none;
 }
+
+a {
+  display: block;
+}
+
+a:hover {
+  color: red;
+}
