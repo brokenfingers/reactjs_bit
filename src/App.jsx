@@ -22,6 +22,10 @@ const doToggle = () => {
     const action = { type: 'make_toggle'}
     dispatchColor(action)
 }   
+const doRandom = () => {
+    const action = { type: 'make_random'}
+    dispatchColor(action)
+}   
     return (
       <div className='App'>
           <header className='App-header'>
@@ -29,6 +33,7 @@ const doToggle = () => {
             <button onClick={doBlack}>Black</button>
             <button onClick={doBlue}>Blue</button>
             <button onClick={doToggle}>Toggle</button>
+            <button onClick={doRandom}>Random color</button>
           </header>
       </div>
     );

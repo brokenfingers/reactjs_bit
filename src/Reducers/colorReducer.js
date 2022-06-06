@@ -1,3 +1,5 @@
+import randColor from "../Functions/randColor";
+
 function colorReducer(state, action) {
     let newState;
 
@@ -12,6 +14,9 @@ function colorReducer(state, action) {
             break
         case 'make_toggle':
             newState = state === 'blue' ? 'black' : 'blue'
+            break
+        case 'make_random':
+            newState = '#' + randColor()
             break
         default:
             newState = state
