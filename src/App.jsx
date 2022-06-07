@@ -83,7 +83,7 @@ const handleSort = () => {
             <button onClick={handleCreateList}>Create list</button>
             <button onClick={handleSort}>Sort list</button>
             {
-                list && list.map((itm, i) => <div key={i}>{itm}</div>)
+                list && list.map((itm, i) => <div key={i}>{itm.number}</div>)
             }
             </div>
             
