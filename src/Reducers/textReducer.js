@@ -6,6 +6,10 @@ function textReducer(state, action) {
         case 'random_text':
             newState = rand(1111, 9999);
             break;
+        case 'input_text':
+            newState = action.payload;
+            break;
+
         default:
             newState = state
     }

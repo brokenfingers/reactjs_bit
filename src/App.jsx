@@ -8,7 +8,7 @@ function App() {
 
 const [color, dispatchColor] = useReducer(colorReducer, '#ffffff')
 const [picked, setPicked] = useState('')
-
+const [inputText, setInputText] = useState('')
 const [h1Text, dispatchText] = useReducer(h1TextReducer, '0000')
 
 const doBlack = () => {
@@ -32,17 +32,23 @@ const doRandom = () => {
 }   
 
 const onColorPick = (e) => setPicked(e.target.value)
-
-
-const doRandomText = () => {
-    const action = {type: 'random_text', payload: 'sdfsdf'}
-    dispatchText(action)
-}
+const handleInputText = (e) => setInputText(e.target.value)
 const doPick = () => {
    let  action = { type: 'make_pick',
     payload: picked}
     dispatchColor(action)
 }   
+
+const doInputText = () => {
+    const action = {type: 'input_text', payload: inputText}
+    dispatchText(action)
+}
+
+const doRandomText = () => {
+    const action = {type: 'random_text'}
+    dispatchText(action)
+}
+
     return (
       <div className='App'>
           <header className='App-header'>
@@ -55,6 +61,9 @@ const doPick = () => {
             
             <input type='color' onChange={onColorPick} value={picked}></input>
 
+
+            <input type='text' value={inputText} onChange={handleInputText}/>
+            <button onClick={doInputText}>Set input text</button>
             <button onClick={doRandomText}>Random text</button>
           </header>
       </div>
