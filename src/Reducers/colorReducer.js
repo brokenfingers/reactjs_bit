@@ -18,6 +18,9 @@ function colorReducer(state, action) {
         case 'make_random':
             newState = '#' + randColor()
             break
+        case 'make_pick':
+            newState = action.payload
+            break
         default:
             newState = state
     }
