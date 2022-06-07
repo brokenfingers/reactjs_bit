@@ -11,14 +11,16 @@ const [color, dispatchColor] = useReducer(colorReducer, '#ffffff')
 const [picked, setPicked] = useState('#ffffff')
 const [inputText, setInputText] = useState('')
 const [h1Text, dispatchText] = useReducer(textReducer, '0000')
-
+const [inputNumber, setInputNumber] = useState('')
 const [list, dispatchList] = useReducer(listReducer, [])
 
 const onColorPick = (e) => setPicked(e.target.value)
 const handleInputText = (e) => setInputText(e.target.value)
+const handleNumberInput = (e) => setInputNumber(+e.target.value)
 const handleColor = (type, payload=null) =>  dispatchColor({type, payload})
 const handleText = (type, payload=null) => dispatchText({type, payload})
-const handleList = (type) => dispatchList({type})
+const handleList = (type, payload=null) => dispatchList({type, payload})
+
 
     return (
       <div className='App'>
@@ -40,12 +42,17 @@ const handleList = (type) => dispatchList({type})
             
             <div className='card'>
                 
-
+            
             <button onClick={()=>handleList('generate_list')}>Create list</button>
             <button onClick={()=>handleList('add_blackToList') }>Add black</button>
             <button onClick={()=>handleList('sort_list') }>Sort list</button>
             <button onClick={()=>handleList('higher_than_500') }>Filter higher than 500</button>
             <button onClick={()=>handleList('lower_than_400') }>Filter less than 400</button>
+            <button onClick={()=>handleList('Show_all') }>Show all</button>
+            <button onClick={()=>handleList('more_than_input', inputNumber) }>Filter more than input</button>
+            <button onClick={()=>handleList('less_than_input', inputNumber) }>Filter less than input</button>
+            <button onClick={()=>handleList('default_sort') }>Default sort</button>
+            <input type='number' value={inputNumber} onChange={handleNumberInput}/>
             {
                 list && list.map((itm, i) => itm.show && <div key={i} style={{color:itm.color}}>{itm.number}</div>)
             }
