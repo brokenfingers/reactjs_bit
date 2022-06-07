@@ -45,8 +45,9 @@ const handleList = (type) => dispatchList({type})
             <button onClick={()=>handleList('add_blackToList') }>Add black</button>
             <button onClick={()=>handleList('sort_list') }>Sort list</button>
             <button onClick={()=>handleList('higher_than_500') }>Filter higher than 500</button>
+            <button onClick={()=>handleList('lower_than_400') }>Filter less than 400</button>
             {
-                list && list.map((itm, i) => <div key={i} style={{color:itm.color}}>{itm.number}</div>)
+                list && list.map((itm, i) => itm.show && <div key={i} style={{color:itm.color}}>{itm.number}</div>)
             }
             </div>
             
