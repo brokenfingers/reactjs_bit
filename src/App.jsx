@@ -57,6 +57,11 @@ const handleCreateList = () => {
     dispatchList(action)
   
 }
+const handleBlackToList = () => {
+    const action =  {type : "add_blackToList"}
+    dispatchList(action)
+  
+}
 const handleSort = () => {
     const action =  {type : "sort_list"}
     dispatchList(action)
@@ -81,9 +86,11 @@ const handleSort = () => {
             <button onClick={doInputText}>Set input text</button>
             <button onClick={doRandomText}>Random text</button>
             <button onClick={handleCreateList}>Create list</button>
+            <button onClick={handleBlackToList}>Add black</button>
+
             <button onClick={handleSort}>Sort list</button>
             {
-                list && list.map((itm, i) => <div key={i}>{itm.number}</div>)
+                list && list.map((itm, i) => <div key={i} style={{color:itm.color}}>{itm.number}</div>)
             }
             </div>
             
