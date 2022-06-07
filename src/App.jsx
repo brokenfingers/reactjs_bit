@@ -57,6 +57,10 @@ const handleCreateList = () => {
     dispatchList(action)
   
 }
+const handleSort = () => {
+    const action =  {type : "sort_list"}
+    dispatchList(action)
+}
 
     return (
       <div className='App'>
@@ -77,6 +81,7 @@ const handleCreateList = () => {
             <button onClick={doInputText}>Set input text</button>
             <button onClick={doRandomText}>Random text</button>
             <button onClick={handleCreateList}>Create list</button>
+            <button onClick={handleSort}>Sort list</button>
             {
                 list && list.map((itm, i) => <div key={i}>{itm}</div>)
             }

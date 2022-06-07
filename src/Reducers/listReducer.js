@@ -8,6 +8,9 @@ function listReducer(state, action) {
             newState = Array.from({ length: 10 }, itm => rand(100, 999))
             console.log(newState)
             break;
+        case 'sort_list':
+            newState = state.slice().sort((a, b) => b - a)
+            break;
         default:
             newState = [...state]
     }
