@@ -15,6 +15,10 @@ function listReducer(state, action) {
             newState = [...state, { number: rand(100, 999), color: '#000000' }]
             console.log(newState)
             break;
+        case 'higher_than_500':
+            newState = [...state].filter(itm => itm.number > 500)
+            console.log(newState)
+            break;
 
         default:
             newState = [...state]
