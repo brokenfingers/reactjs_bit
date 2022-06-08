@@ -1,66 +1,28 @@
-import { useReducer, useState } from 'react';
 import './App.css';
-import colorReducer from './Reducers/colorReducer'
-import listReducer from './Reducers/listReducer';
-import textReducer from './Reducers/textReducer'
-
+import axios from 'axios'
+import { useEffect, useState } from 'react';
 
 function App() {
 
-const [color, dispatchColor] = useReducer(colorReducer, '#ffffff')
-const [picked, setPicked] = useState('#ffffff')
-const [inputText, setInputText] = useState('')
-const [h1Text, dispatchText] = useReducer(textReducer, '0000')
-const [inputNumber, setInputNumber] = useState('')
-const [list, dispatchList] = useReducer(listReducer, [])
-
-const onColorPick = (e) => setPicked(e.target.value)
-const handleInputText = (e) => setInputText(e.target.value)
-const handleNumberInput = (e) => setInputNumber(+e.target.value)
-const handleColor = (type, payload=null) =>  dispatchColor({type, payload})
-const handleText = (type, payload=null) => dispatchText({type, payload})
-const handleList = (type, payload=null) => dispatchList({type, payload})
-
+  const [fetched, setFetched] = useState(null)
+    useEffect(() => {
+        if(!fetched) {
+        axios.get('https://in3.dev/knygos/')
+      .then(function (response) {
+          setFetched(response.data);
+        })
+      }}
+     , [fetched]);
 
     return (
       <div className='App'>
           <header className='App-header'>
-              <div className='card'>
-                <h1 style={{backgroundColor:color}}>{h1Text}</h1>
-                <button onClick={()=>handleColor('make_black')}>Black</button>
-                <button onClick={()=>handleColor('make_blue')}>Blue</button>
-                <button onClick={()=>handleColor('make_toggle')}>Toggle</button>
-                <button onClick={()=>handleColor('make_random')}>Random color</button>
-                <button onClick={()=>handleColor('make_pick', picked)}>Set picked</button>
-
-                <input type='color' onChange={onColorPick} value={picked}></input>
-                <input type='text' value={inputText} onChange={handleInputText}/>
-
-                <button onClick={()=>handleText('input_text', inputText)}>Set input text</button>
-                <button onClick={()=>handleText('random_text')}>Random text</button>
-              </div>
-            
+            <h1>Books</h1>
             <div className='card'>
-                
-            
-            <button onClick={()=>handleList('generate_list')}>Create list</button>
-            <button onClick={()=>handleList('add_blackToList') }>Add black</button>
-            <button onClick={()=>handleList('sort_list') }>Sort list</button>
-            <button onClick={()=>handleList('higher_than_500') }>Filter higher than 500</button>
-            <button onClick={()=>handleList('lower_than_400') }>Filter less than 400</button>
-            <button onClick={()=>handleList('Show_all') }>Show all</button>
-            <button onClick={()=>handleList('more_than_input', inputNumber) }>Filter more than input</button>
-            <button onClick={()=>handleList('less_than_input', inputNumber) }>Filter less than input</button>
-            <button onClick={()=>handleList('default_sort') }>Default sort</button>
-            <input type='number' value={inputNumber} onChange={handleNumberInput}/>
-            {
-                list && list.map((itm, i) => itm.show && <div key={i} style={{color:itm.color}}>{itm.number}</div>)
-            }
+              {
+                fetched && fetched.map((itm) => <div key={itm.id}>{itm.title}</div>)
+              }
             </div>
-            
-
-
-            
           </header>
       </div>
     );
