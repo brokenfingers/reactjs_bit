@@ -4,7 +4,7 @@ import { useEffect, useReducer } from 'react';
 import booksReducer from './Reducers/booksReducer'
 function App() {
 
-  // const [fetched, setFetched] = useState(null)
+
   const [fetchedBooks, dispatchBooks] = useReducer(booksReducer, null )
 
     useEffect(() => {
@@ -13,7 +13,6 @@ function App() {
       .then(function (response) {
           dispatchBooks({type: 'uzkrauta', payload: response.data})
 
-          // setFetched(response.data);
         })
       }}
      , [fetchedBooks]);
@@ -23,8 +22,9 @@ function App() {
           <header className='App-header'>
             <h1>Books</h1>
             <div className='card'>
+              <button onClick={()=>dispatchBooks({type: 'sort_abc'})}>Rusiuoti pagal abc</button>
               {
-                fetchedBooks && fetchedBooks.map((itm) => <div key={itm.id}>{itm.title}</div>)
+                fetchedBooks ? fetchedBooks.map((itm) => <div key={itm.id}>{itm.title}</div>) : <h2>Loading...</h2>
               }
             </div>
           </header>
