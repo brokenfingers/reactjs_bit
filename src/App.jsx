@@ -1,18 +1,22 @@
 import './App.css';
 import axios from 'axios'
-import { useEffect, useState } from 'react';
-
+import { useEffect, useReducer } from 'react';
+import booksReducer from './Reducers/booksReducer'
 function App() {
 
-  const [fetched, setFetched] = useState(null)
+  // const [fetched, setFetched] = useState(null)
+  const [fetchedBooks, dispatchBooks] = useReducer(booksReducer, null )
+
     useEffect(() => {
-        if(!fetched) {
+        if(!fetchedBooks) {
         axios.get('https://in3.dev/knygos/')
       .then(function (response) {
-          setFetched(response.data);
+          dispatchBooks({type: 'uzkrauta', payload: response.data})
+
+          // setFetched(response.data);
         })
       }}
-     , [fetched]);
+     , [fetchedBooks]);
 
     return (
       <div className='App'>
@@ -20,7 +24,7 @@ function App() {
             <h1>Books</h1>
             <div className='card'>
               {
-                fetched && fetched.map((itm) => <div key={itm.id}>{itm.title}</div>)
+                fetchedBooks && fetchedBooks.map((itm) => <div key={itm.id}>{itm.title}</div>)
               }
             </div>
           </header>
