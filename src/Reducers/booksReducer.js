@@ -11,29 +11,22 @@ function booksReducer(state, action) {
                 if (a.title[0] < b.title[0]) return -1
                 return 0
             })
-
             break;
         case 'sort_default':
-
             newState = [...state].sort((a, b) => a.row - b.row)
-
             break;
         case 'price_above_13':
             newState = state.map(itm => (+itm.price > 13) ? ({ ...itm, show: true }) : ({ ...itm, show: false }))
-
             break;
         case 'show_all':
             newState = state.map(itm => ({ ...itm, show: true }))
-
             break;
         case 'get_new':
             newState = null
-
             break;
         default:
             newState = [...state]
     }
-
     return newState;
 }
 
