@@ -1,38 +1,36 @@
+import { useState } from 'react';
 import './App.css';
-import axios from 'axios'
-import { useEffect, useReducer } from 'react';
-import booksReducer from './Reducers/booksReducer'
+import Number3 from './Components/023/Number3';
+import Te from './Components/023/Te';
+
+// import { useEffect, useReducer } from 'react';
+
 function App() {
 
 
-  const [fetchedBooks, dispatchBooks] = useReducer(booksReducer, null )
+  const [number, setNumber] = useState('0')
+  const [number3, setNumber3] = useState('0')
+  const [number5, setNumber5] = useState('0')
 
-    useEffect(() => {
-        if(fetchedBooks) return
-        axios.get('https://in3.dev/knygos/')
-      .then(function (response) {
-          dispatchBooks({type: 'uzkrauta', payload: response.data})
-
-        })
-      }
-     , [fetchedBooks]);
-
+  
     return (
+    <Number3.Provider value={{number3, number5}}>
+
       <div className='App'>
           <header className='App-header'>
-            <h1>Books</h1>
+            <h1>Context</h1>
+            <button onClick={()=>setNumber(i => ++i)}>Te Va h2</button>
+            <button onClick={()=>setNumber3(i => +i+3)}>Te Va h2</button>
+            <button onClick={()=>setNumber5(i => +i+5)}>Te Va h2</button>
+        
+            <Te number={number}></Te>
             <div className='card'>
-              <button onClick={()=>dispatchBooks({type: 'sort_abc'})}>Rusiuoti pagal abc</button>
-              <button onClick={()=>dispatchBooks({type: 'sort_default'})}>Default sort</button>
-              <button onClick={()=>dispatchBooks({type: 'price_above_13'})}>Filter price above 13</button>
-              <button onClick={()=>dispatchBooks({type: 'show_all'})}>Show all</button>
-              <button onClick={()=>dispatchBooks({type: 'get_new'})}>Get new list from server</button>
-              {
-                fetchedBooks ? fetchedBooks.map((itm) => itm.show && <div key={itm.id}>{itm.title}<span>{itm.price}</span></div>) : <h2>Loading...</h2>
-              }
+
             </div>
           </header>
       </div>
+
+      </Number3.Provider>
     );
 }
 
